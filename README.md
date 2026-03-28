@@ -1,2 +1,2 @@
 # blog
-my personal blog (like in 2005)
+my personal blog/cv or something like this (like in 2005)

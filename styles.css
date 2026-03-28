@@ -1,0 +1,312 @@
+:root {
+  --bg: #ffffff;
+  --text: #1f2328;
+  --muted: #59636e;
+  --rule: #d0d7de;
+  --accent: #0969da;
+  --max-width: 50rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.6;
+}
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  color: var(--text);
+}
+
+.page {
+  width: min(calc(100% - 2.5rem), var(--max-width));
+  margin: 0 auto;
+  padding: 4.5rem 0 5rem;
+}
+
+.hero,
+.section,
+.quote,
+.footer,
+.page-header,
+.section-nav {
+  position: relative;
+}
+
+.hero,
+.section,
+.quote,
+.footer,
+.page-header {
+  padding: 0 0 2.4rem;
+  margin-bottom: 2.4rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 12rem;
+  gap: 2rem;
+  align-items: start;
+}
+
+.eyebrow,
+.section-nav,
+.entry-date,
+.portrait-note,
+.entry-header p {
+  font-family: inherit;
+}
+
+.eyebrow {
+  margin: 0 0 0.75rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+  text-transform: lowercase;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+blockquote {
+  margin-top: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+h1 {
+  margin-bottom: 1rem;
+  font-size: clamp(2.8rem, 8vw, 4rem);
+  letter-spacing: -0.03em;
+}
+
+h2 {
+  margin-bottom: 1rem;
+  font-size: 1.45rem;
+  letter-spacing: -0.02em;
+}
+
+h3 {
+  margin-bottom: 0.45rem;
+  font-size: 1.08rem;
+}
+
+.hero p,
+.section p,
+.note p,
+.footer p,
+li,
+blockquote {
+  font-size: 1rem;
+}
+
+.hero-meta,
+.entry-date,
+.entry-header p,
+.portrait-note,
+.section-nav a {
+  color: var(--muted);
+}
+
+.hero-meta {
+  margin-top: 1.2rem;
+  max-width: 36rem;
+}
+
+.page-intro,
+.job-meta,
+.stack-line {
+  color: var(--muted);
+}
+
+.page-intro {
+  max-width: 38rem;
+}
+
+.portrait-card {
+  padding-top: 0.4rem;
+}
+
+.portrait-frame {
+  width: 12rem;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 1px solid var(--rule);
+}
+
+.portrait-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.portrait-note {
+  margin: 0.95rem 0 0;
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.quote {
+  max-width: 42rem;
+}
+
+.quote p {
+  margin-bottom: 0.85rem;
+  font-style: normal;
+}
+
+.quote footer {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.section-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem 1.25rem;
+  margin-bottom: 2.4rem;
+  padding-bottom: 0.2rem;
+}
+
+.section-nav a {
+  text-decoration: none;
+}
+
+.section-nav a:hover {
+  text-decoration: underline;
+}
+
+.section ul {
+  padding-left: 1.2rem;
+}
+
+.section li + li {
+  margin-top: 0.35rem;
+}
+
+.entry,
+.note,
+.job,
+.project-detail {
+  padding: 1.3rem 0 0;
+}
+
+.entry + .entry,
+.note + .note,
+.job + .job,
+.project-detail + .project-detail {
+  margin-top: 0.55rem;
+}
+
+.entry-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+}
+
+.entry-header p,
+.entry-date {
+  margin-bottom: 0.4rem;
+  font-size: 0.95rem;
+}
+
+.job-meta,
+.stack-line {
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+}
+
+.subsection {
+  margin-top: 1.75rem;
+  padding-top: 0.2rem;
+}
+
+.subsection h3,
+.project-detail h4 {
+  margin-top: 0;
+}
+
+.project-detail h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.footer {
+  border-bottom: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.footer p {
+  margin-bottom: 0.45rem;
+}
+
+@media (max-width: 780px) {
+  .page {
+    width: min(calc(100% - 1.6rem), var(--max-width));
+    padding-top: 2.8rem;
+    padding-bottom: 3rem;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .portrait-card {
+    order: -1;
+    width: fit-content;
+    padding-top: 0;
+  }
+
+  .portrait-frame {
+    width: 8.75rem;
+  }
+
+  .hero,
+  .section,
+  .quote,
+  .footer {
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero p,
+  .section p,
+  .note p,
+  .footer p,
+  li,
+  blockquote {
+    font-size: 0.98rem;
+  }
+}
