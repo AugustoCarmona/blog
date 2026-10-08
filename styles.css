@@ -166,6 +166,11 @@ blockquote {
   max-width: 36rem;
 }
 
+.hero-meta-followup {
+  display: block;
+  padding-top: 0.45rem;
+}
+
 .page-intro,
 .job-meta,
 .stack-line {
