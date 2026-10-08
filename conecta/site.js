@@ -1,17 +1,19 @@
 const menu = document.querySelector('.menu-toggle');
 const nav = document.querySelector('.nav');
+const english = document.documentElement.lang === 'en';
+const menuLabel = (open) => english ? (open ? 'Close menu' : 'Open menu') : (open ? 'Cerrar menú' : 'Abrir menú');
 
 if (menu && nav) {
   menu.addEventListener('click', () => {
     const open = menu.getAttribute('aria-expanded') === 'true';
     menu.setAttribute('aria-expanded', String(!open));
-    menu.setAttribute('aria-label', open ? 'Abrir menú' : 'Cerrar menú');
+    menu.setAttribute('aria-label', menuLabel(!open));
     nav.classList.toggle('open', !open);
   });
   nav.addEventListener('click', (event) => {
-    if (event.target instanceof HTMLAnchorElement) {
+    if (event.target instanceof Element && event.target.closest('a')) {
       menu.setAttribute('aria-expanded', 'false');
-      menu.setAttribute('aria-label', 'Abrir menú');
+      menu.setAttribute('aria-label', menuLabel(false));
       nav.classList.remove('open');
     }
   });
@@ -19,7 +21,7 @@ if (menu && nav) {
 
 const current = location.pathname.split('/').pop() || 'index.html';
 document.querySelectorAll('.nav a[href]').forEach((link) => {
-  if (link.getAttribute('href') === current) link.setAttribute('aria-current', 'page');
+  if (new URL(link.href).pathname.split('/').pop() === current) link.setAttribute('aria-current', 'page');
 });
 
 const revealItems = document.querySelectorAll('.reveal');
@@ -128,17 +130,19 @@ if (form instanceof HTMLFormElement) {
     if (!form.reportValidity()) return;
     const values = new FormData(form);
     const body = [
-      `Nombre: ${values.get('nombre')}`,
-      `Empresa: ${values.get('empresa') || 'No indicada'}`,
+      `${english ? 'Name' : 'Nombre'}: ${values.get('nombre')}`,
+      `${english ? 'Company' : 'Empresa'}: ${values.get('empresa') || (english ? 'Not specified' : 'No indicada')}`,
       `Email: ${values.get('email')}`,
       '',
-      'Desafío:',
+      english ? 'Challenge:' : 'Desafío:',
       String(values.get('desafio') || ''),
     ].join('\n');
-    const subject = `Consulta para Conecta — ${values.get('nombre')}`;
+    const subject = `${english ? 'Inquiry for Conecta' : 'Consulta para Conecta'} — ${values.get('nombre')}`;
     const mailto = `mailto:augustocarmonaperez@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     const status = document.querySelector('#form-status');
-    if (status) status.textContent = 'Abrimos un borrador de email. Elegí el destinatario antes de enviarlo.';
+    if (status) status.textContent = english
+      ? 'We opened an email draft. Review it before sending.'
+      : 'Abrimos un borrador de email. Revisalo antes de enviarlo.';
     window.location.href = mailto;
   });
 }
