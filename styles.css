@@ -171,6 +171,30 @@ blockquote {
   padding-top: 0.45rem;
 }
 
+.cv-downloads {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 1.2rem 0 0.2rem;
+}
+
+.cv-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, var(--rule));
+  border-radius: 2px;
+  color: var(--accent);
+  font-size: 0.88rem;
+  text-decoration: none;
+}
+
+.cv-button:hover {
+  border-color: var(--warm-accent);
+  color: var(--warm-accent);
+}
+
 .page-intro,
 .job-meta,
 .stack-line {
